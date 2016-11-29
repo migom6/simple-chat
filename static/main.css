@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div, section {
+    box-sizing: border-box;
+}
+
+#display-area {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: calc(100% - 4em);
+    /*border: 2px solid pink;*/
+}
+
+#controls-area {
+    height: 4em;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    /*border: 2px solid green;*/
+    padding: 10px 10px;
+}
+
+#controls-area, #display-area {
+    width: 100vw;
+    padding: 2px;
+}
+
+#user-list, #chat-area, #search-area, #type-area {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+#chat-form {
+    margin: 5px;
+}
+
+#chat-form input[type="text"] {
+    width: calc(100% - 80px);
+    margin-left: 5px;
+}
+
+#chat-form button {
+    float: right;
+    margin-right: 5px;
+}
+
+#my-name {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.clearfix {
+    height: 5px;
+}
+
+#chat-area {
+    overflow: scroll;
+}
+
+#chat-area div {
+    display: block;
+    max-width: 90%;
+    min-width: 60%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.sent {
+    float: right;
+    border-left-width: 5px;
+    border-left-color: #428bca;
+    margin-left: 20%;
+}
+
+.receive {
+    float: left;
+    border-right-width: 5px;
+    border-right-color: #5cb85c;
+    margin-right: 20%;
+}

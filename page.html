@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>chat app</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <style>
+        body{
+          margin-top: 30px;
+      }
+        #userFormArea{
+            display: none;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class ='container'>
+        <div id = 'userFormArea' class = 'row'>
+            <div class = 'col-md-12'>
+                <form id = 'userForm'>
+                    <div class = "form-group">
+                        <label><i>Enter Username</i></label>
+                        <input class = 'form-control' id = 'username'/>
+                        </br>
+                        <input type = 'submit' class = 'btn btn-info' value="Login" >
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id = 'messageArea' class ='row'>
+            <div class = 'col-md-4'>
+                <div class = 'well'>
+                    <h3>Online users</h3>
+                    <ul class = 'list-group' id ="users"></ul>
+                </div>
+            </div>
+            <div class = 'col-md-8'>
+                <div class = 'chat' id = 'chat'></div>
+                <form id = 'messageForm'>
+                    <div class = "form-group">
+                        <label><i>Enter Message</i></label>
+                        <input autocomplete="off" type="text" class = 'form-control' id = 'message'></input>
+                        </br>
+                        <button type = 'submit' class = 'btn btn-info' value="Enter Message">send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(e){
+            var socket = io.connect();
+            var $messageForm = $('#messageForm');
+            var $message = $('#message');
+            var $chat = $('#chat');
+            $messageForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('send message', $message.val());
+                $message.val('');
+            });
+            socket.on('new message', function(data){
+              $chat.append('<div class = "well">'+ data.msg +'</div>');
+            });
+        });
+    </script>
+</body>
+</html>
