@@ -1,10 +1,10 @@
 # simple-chat
 
-1.install node 
+- Install node, [Download here](https://nodejs.org/en/download/)
 
-2.npm install 
+- npm install 
 
-3.node server.js
+- node server.js
 
-4.go to localhost:3000
+- go to localhost:3000
 :star:
